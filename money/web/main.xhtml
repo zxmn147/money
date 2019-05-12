@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>省錢大作戰</title>
+    </h:head>
+    <h:body>
+        <script type="text/javascript">    
+    PrimeFaces.locales['de'] = {
+        closeText: 'Schließen',
+        prevText: 'Zurück',
+        nextText: 'Weiter',
+        monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+        monthNamesShort: ['Jan', 'Feb', 'März', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+        dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+        dayNamesShort: ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'],
+        dayNamesMin: ['S', 'M', 'D', 'M ', 'D', 'F ', 'S'],
+        weekHeader: 'Woche',
+        FirstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: '',
+        timeOnlyTitle: 'Nur Zeit',
+        timeText: 'Zeit',
+        hourText: 'Stunde',
+        minuteText: 'Minute',
+        secondText: 'Sekunde',
+        currentText: 'Aktuelles Datum',
+        ampm: false,
+        month: 'Monat',
+        week: 'Woche',
+        day: 'Tag',
+        allDayText: 'Ganzer Tag'
+    };
+</script>
+ 
+<style type="text/css">
+    .value {
+        font-weight: bold;
+    }
+    
+</style>
+ 
+ 
+<h:form id="form">
+    <p:growl id="msgs" showDetail="true" />
+     
+    <h:panelGrid columns="2" cellpadding="5">
+        
+        <p:calendar id="inline" value="#{calendarView.date1}" mode="inline" />
+         <h:button value="新增" outcome="newRecord"></h:button>
+    </h:panelGrid>
+     
+      
+     
+    <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+        <p:panelGrid id="display" columns="2" columnClasses="label,value">
+            <h:outputText value="Inline:" />
+            <h:outputText value="#{calendarView.date1}">
+                <f:convertDateTime pattern="MM/dd/yyyy" />
+            </h:outputText>
+        </p:panelGrid>
+    </p:dialog>
+</h:form>
+        <h:form>
+               <h:button value="支出" outcome="outiay"></h:button>
+               <h:button value="收入" outcome="income"></h:button>
+               <h:button value="收支簿" outcome="moneyBook"></h:button>
+               <h:button value="會員管理" outcome="account"></h:button>
+            </h:form>
+    </h:body>    
+</html>
+

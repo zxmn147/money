@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>省錢大作戰</title>
+    </h:head>
+    <h:body>
+       <h:selectOneRadio > 
+            <f:selectItem itemValue = "1" itemLabel = "支出" />
+            <f:selectItem itemValue = "2" itemLabel = "收入" />
+       </h:selectOneRadio><br/>  
+        <h:outputLabel value="種類: "></h:outputLabel>
+      <h:selectOneMenu>
+        <f:selectItems/>
+      </h:selectOneMenu><br/><br/>  
+     <h:outputLabel value="名稱: "></h:outputLabel>
+     <h:inputText></h:inputText><br/><br/>
+     <h:outputLabel value="金額: "></h:outputLabel>
+     <h:inputText></h:inputText><br/><br/>
+     <h:outputLabel value="備註: "></h:outputLabel>
+     <h:inputTextarea></h:inputTextarea><br/><br/>
+     <h:button value="儲存" outcome="main"></h:button>
+     <h:button value="再來一筆" outcome="newRecord"></h:button>
+    </h:body>
+</html>
+
