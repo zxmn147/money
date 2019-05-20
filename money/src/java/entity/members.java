@@ -216,17 +216,16 @@ public class members implements Serializable {
     }
 
     @OneToMany(cascade = CascadeType.ALL) 
-    @JoinColumn(name = "men_ID", referencedColumnName = "ID")  
+    @JoinColumn(name = "member_ID", referencedColumnName = "ID")  
     private Collection<income> incomes;  
     
     @OneToMany(cascade = CascadeType.ALL) 
-    @JoinColumn(name = "men_ID", referencedColumnName = "ID")  
+    @JoinColumn(name = "member_ID", referencedColumnName = "ID")  
     private Collection<outlay> outlays;
     
-    @OneToOne(cascade = CascadeType.ALL)
-    // Specity join column name and referened column name.
-    @JoinColumn(name = "men_money", referencedColumnName = "ID")
-    private moneyBook men_money;
+    @OneToMany(cascade = CascadeType.ALL) 
+    @JoinColumn(name = "member_ID", referencedColumnName = "ID")  
+    private Collection<moneyBook> moneyBooks;  
     
     @Override
     public int hashCode() {

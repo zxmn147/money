@@ -15,7 +15,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -44,7 +43,7 @@ public class outlay implements Serializable {
     
      @OneToOne(cascade = CascadeType.ALL)
     // Specity join column name and referened column name.
-    @JoinColumn(name = "ou_kind", referencedColumnName = "ID")
+    @JoinColumn(name = "out_kind", referencedColumnName = "ID")
     private outlayKind outlay_kind;
     
     

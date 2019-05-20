@@ -40,7 +40,7 @@ public class income implements Serializable {
     
     @OneToOne(cascade = CascadeType.ALL)
     // Specity join column name and referened column name.
-    @JoinColumn(name = "in_kind", referencedColumnName = "ID")
+    @JoinColumn(name = "income_kind", referencedColumnName = "ID")
     private incomeKind income_kind;
     
     
