@@ -5,7 +5,7 @@
  */
 
 
-import com.sun.xml.registry.uddi.bindings_v2_2.Email;
+package entity;
 import entity.income;
 import entity.moneyBook;
 import entity.outlay;
@@ -20,10 +20,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import org.hibernate.validator.internal.constraintvalidators.EmailValidator;
+
 
 /**
  *

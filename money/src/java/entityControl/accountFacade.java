@@ -1,5 +1,5 @@
 package entityControl;
-import entity.income;
+import entity.members;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -12,14 +12,14 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 @LocalBean
-public class accountFacade extends AbstractFacade<income>{
+public class accountFacade extends AbstractFacade<members>{
 
     @PersistenceContext(unitName = "moneyPU")
     private EntityManager em;
     
     // default constructor
     public accountFacade() {
-        super(income.class);
+        super(members.class);
     }
     
     
@@ -28,7 +28,7 @@ public class accountFacade extends AbstractFacade<income>{
         return em;
     }
 
-    public income find(Class<income> aClass, Long id) {
+    public members find(Class<members> aClass, Long id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
