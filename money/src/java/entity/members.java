@@ -46,14 +46,14 @@ public class members implements Serializable {
     
     
     @Column(length = 30)
-    private char name;
+    private String name;
 
     /**
      * Get the value of name
      *
      * @return the value of name
      */
-    public char getName() {
+    public String getName() {
         return name;
     }
 
@@ -62,19 +62,19 @@ public class members implements Serializable {
      *
      * @param name new value of name
      */
-    public void setName(char name) {
+    public void setName(String name) {
         this.name = name;
     }
     
     @Column(length = 15)
-    private char username;
+    private String username;
 
     /**
      * Get the value of username
      *
      * @return the value of username
      */
-    public char getUsername() {
+    public String getUsername() {
         return username;
     }
 
@@ -83,19 +83,19 @@ public class members implements Serializable {
      *
      * @param username new value of username
      */
-    public void setUsername(char username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
     @Column(length = 15)
-    private char password;
+    private String password;
 
     /**
      * Get the value of password
      *
      * @return the value of password
      */
-    public char getPassword() {
+    public String getPassword() {
         return password;
     }
 
@@ -104,7 +104,7 @@ public class members implements Serializable {
      *
      * @param password new value of password
      */
-    public void setPassword(char password) {
+    public void setPassword(String password) {
         this.password = password;
     }
     
@@ -130,14 +130,14 @@ public class members implements Serializable {
     }
     
     @Column(length = 13)
-    private char phone;
+    private String phone;
 
     /**
      * Get the value of phone
      *
      * @return the value of phone
      */
-    public char getPhone() {
+    public String getPhone() {
         return phone;
     }
 
@@ -146,7 +146,7 @@ public class members implements Serializable {
      *
      * @param phone new value of phone
      */
-    public void setPhone(char phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
     

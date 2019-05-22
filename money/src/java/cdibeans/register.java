@@ -28,7 +28,7 @@ public class register implements Serializable{
     public register() {
     }
     
-   
+     private int a =0;
      private members newItem;
 
     /**
@@ -36,15 +36,15 @@ public class register implements Serializable{
      *
      * @return the value of name
      */
-     
-    private char account;
+    
+    private String account;
 
     /**
      * Get the value of account
      *
      * @return the value of account
      */
-    public char getAccount() {
+    public String getAccount() {
         return account;
     }
 
@@ -53,18 +53,18 @@ public class register implements Serializable{
      *
      * @param account new value of account
      */
-    public void setAccount(char account) {
+    public void setAccount(String account) {
         this.account = account;
     }
     
-    private char password;
+    private String password;
 
     /**
      * Get the value of password
      *
      * @return the value of password
      */
-    public char getPassword() {
+    public String getPassword() {
         return password;
     }
 
@@ -73,7 +73,7 @@ public class register implements Serializable{
      *
      * @param password new value of password
      */
-    public void setPassword(char password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -91,14 +91,26 @@ public class register implements Serializable{
         return "register";
     }
     
-    public String create() {
+      public String create() {
+       for(int i=0;i<accountFacade.count();i++){
+        if (newItem.getUsername().equals(accountFacade.findAll().get(i).getUsername())) {
+            a=2;
+            break;
+        }
+       }
+       if (a==0){
         accountFacade.create(newItem);
         return "index";
+       }
+       else{
+            a=0;
+           return "register";
+       } 
 }
 
     public String finALL(){
         for(int i=0;i<accountFacade.count();i++){
-            if (account ==accountFacade.findAll().get(i).getUsername() && password ==accountFacade.findAll().get(i).getPassword()) {
+            if (account.equals(accountFacade.findAll().get(i).getUsername()) && password.equals(accountFacade.findAll().get(i).getPassword())) {
               return "main"; 
             }
         } 

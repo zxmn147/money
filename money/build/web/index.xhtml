@@ -10,7 +10,7 @@
             <h:outputLabel value="帳號: "></h:outputLabel>
             <h:inputText value="#{register.account}"></h:inputText><br/><br/>
             <h:outputLabel value="密碼: "></h:outputLabel>
-            <h:inputText value="#{register.password}"></h:inputText><br/><br/>
+            <h:inputSecret  value="#{register.password}"></h:inputSecret><br/><br/>
             <h:commandButton value="登入" action="#{register.finALL()}"></h:commandButton><br/><br/>
             <h:commandButton value="註冊" action="#{register.goNewItemPage}"></h:commandButton>
         </h:form>

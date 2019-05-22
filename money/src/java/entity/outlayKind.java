@@ -33,14 +33,14 @@ public class outlayKind implements Serializable {
     }
     
     @Column(length = 30)
-    private char name;
+    private String name;
 
     /**
      * Get the value of name
      *
      * @return the value of name
      */
-    public char getName() {
+    public String getName() {
         return name;
     }
 
@@ -49,7 +49,7 @@ public class outlayKind implements Serializable {
      *
      * @param name new value of name
      */
-    public void setName(char name) {
+    public void setName(String name) {
         this.name = name;
     }
 

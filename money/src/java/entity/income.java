@@ -45,14 +45,14 @@ public class income implements Serializable {
     
     
     @Column(length = 30)
-    private char itemName;
+    private String itemName;
 
     /**
      * Get the value of itemName
      *
      * @return the value of itemName
      */
-    public char getItemName() {
+    public String getItemName() {
         return itemName;
     }
 
@@ -61,7 +61,7 @@ public class income implements Serializable {
      *
      * @param itemName new value of itemName
      */
-    public void setItemName(char itemName) {
+    public void setItemName(String itemName) {
         this.itemName = itemName;
     }
     
@@ -107,7 +107,7 @@ public class income implements Serializable {
     }
     
     @Column(length = 12)
-    private char note;
+    private String note;
 
     /**
      * Get the value of note
@@ -115,7 +115,7 @@ public class income implements Serializable {
      * @return the value of note
      */
         
-    public char getNote() {
+    public String getNote() {
         return note;
     }
 
@@ -124,7 +124,7 @@ public class income implements Serializable {
      *
      * @param note new value of note
      */
-    public void setNote(char note) {
+    public void setNote(String note) {
         this.note = note;
     }
 
