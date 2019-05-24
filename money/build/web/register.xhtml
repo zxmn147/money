@@ -8,57 +8,21 @@
          <title>省錢大作戰</title>
     </h:head>
     <h:body>
-       <script type="text/javascript">    
-    PrimeFaces.locales['de'] = {
-        closeText: 'Schließen',
-        prevText: 'Zurück',
-        nextText: 'Weiter',
-        monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
-        monthNamesShort: ['Jan', 'Feb', 'März', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
-        dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
-        dayNamesShort: ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'],
-        dayNamesMin: ['S', 'M', 'D', 'M ', 'D', 'F ', 'S'],
-        weekHeader: 'Woche',
-        FirstDay: 1,
-        isRTL: false,
-        showMonthAfterYear: false,
-        yearSuffix: '',
-        timeOnlyTitle: 'Nur Zeit',
-        timeText: 'Zeit',
-        hourText: 'Stunde',
-        minuteText: 'Minute',
-        secondText: 'Sekunde',
-        currentText: 'Aktuelles Datum',
-        ampm: false,
-        month: 'Monat',
-        week: 'Woche',
-        day: 'Tag',
-        allDayText: 'Ganzer Tag'
-    };
-</script>
-
+ 
            <style type="text/css">
                .value {
                    font-weight: bold;
                }
 
-           </style>
-           <h:form id="form">
-    <p:growl id="msgs" showDetail="true" />
-     
-    
-      
-   
-</h:form>
-        
+           </style>    
         <h:form>
-     
+              <h:outputScript name="calendar.js" library="js" target="head"/>
             <p>設定會員帳號及密碼</p>
             <h:outputLabel value="帳號: "></h:outputLabel>
             <h:inputText value="#{register.newItem.username}" maxlength="30"></h:inputText><br/><br/>
             <h:outputLabel value="密碼: "></h:outputLabel>
             <h:inputSecret value="#{register.newItem.password}"  maxlength="15"></h:inputSecret><br/><br/>
-             <p>填寫基本資料</p>
+             <p>填寫基本資料(也可以之後再補填入)</p>
             <h:outputLabel value="姓名: "></h:outputLabel>
             <h:inputText value="#{register.newItem.name}"></h:inputText><br/><br/>
          

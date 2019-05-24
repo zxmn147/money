@@ -53,7 +53,7 @@ public class outlayKind implements Serializable {
         this.name = name;
     }
 
-
+    
 
     @Override
     public int hashCode() {
