@@ -52,9 +52,7 @@
         
         <p:calendar id="inline" value="#{calendarView.date1}" mode="inline" />
          <h:button value="新增" outcome="newRecord"></h:button>
-    </h:panelGrid>
-     
-      
+    </h:panelGrid>      
      
     <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
         <p:panelGrid id="display" columns="2" columnClasses="label,value">
@@ -67,7 +65,7 @@
 </h:form>
         <h:form>
             <h:commandLink value="登出" action="#{register.logout()}"></h:commandLink>
-               <h:button value="支出" outcome="outiay"></h:button>
+               <h:button value="支出" outcome="outlay"></h:button>
                <h:button value="收入" outcome="income"></h:button>
                <h:button value="收支簿" outcome="moneyBook"></h:button>
                <h:button value="會員管理" outcome="account"></h:button>
