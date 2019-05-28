@@ -7,11 +7,11 @@
         <title>省錢大作戰</title>
     </h:head>
     <h:body>
-        <p>新增收入類別</p>
+        <p>新增支出類別</p>
         <h:form>
             <h:outputLabel value="名稱: "></h:outputLabel>
-            <h:inputText value="#{income.newIncomeKind}"></h:inputText><br/><br/>
-            <h:dataTable value="#{income.findincomeAll()}" var="item">
+            <h:inputText></h:inputText><br/><br/>
+            <h:dataTable value="#{outlay.findoutlayKindAll()}" var="item">
                 <h:column>
                     <!-- column header -->
                     <f:facet name="header">ID</f:facet>
@@ -23,7 +23,7 @@
                     #{item.name}
                 </h:column>
             </h:dataTable>
-            <h:commandLink value="新增種類" action="#{income.incomeKindCreate()}"></h:commandLink>
+            <h:commandLink value="新增種類" action="#{outlay.outlayKindCreate()}"></h:commandLink>
         </h:form> 
         <h:button value="返回" outcome="newRecord"></h:button>
     </h:body>
