@@ -10,7 +10,7 @@
         <p>新增支出類別</p>
         <h:form>
             <h:outputLabel value="名稱: "></h:outputLabel>
-            <h:inputText></h:inputText><br/><br/>
+            <h:inputText value="#{outlay.newOutlayKind}"></h:inputText><br/><br/>
             <h:dataTable value="#{outlay.findoutlayKindAll()}" var="item">
                 <h:column>
                     <!-- column header -->

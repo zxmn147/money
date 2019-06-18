@@ -173,6 +173,7 @@ public class register implements Serializable{
            a=0;
            return "register";
        } 
+       
 }
 
     public String login(){
@@ -189,7 +190,7 @@ public class register implements Serializable{
     public String logout(){
         ID = id1;
         System.out.println(ID);
-        return "index"; 
+        return "login1"; 
     }
     
     public String edit(){

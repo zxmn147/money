@@ -19,6 +19,30 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/index.xhtml</welcome-file>
+        <welcome-file>/faces/index.xhtml</welcome-file>
     </welcome-file-list>
+    <security-constraint>
+        <display-name>member Area</display-name>
+        <web-resource-collection>
+            <web-resource-name>member pages</web-resource-name>
+            <description/>
+            <url-pattern>/faces/index.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>member</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>money_realm</realm-name>
+        <form-login-config>
+            <form-login-page>/faces/login1.xhtml</form-login-page>
+            <form-error-page>/faces/badLogin.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-role>
+        <description/>
+        <role-name>member</role-name>
+    </security-role>
 </web-app>

@@ -70,7 +70,7 @@ public class income {
         incomeKind addIncomeKind = new incomeKind();
         addIncomeKind.setName(newIncomeKind);
         incomeKind.create(addIncomeKind);
-        return "incomeKind";
+        return "member/incomeKind";
     }
     
     
