@@ -88,7 +88,7 @@
     <p>新增支出類別</p>
         <h:form>
             <h:outputLabel value="名稱: "></h:outputLabel>
-            <h:inputText value="#{outlayCdi.newOutlayKind}"></h:inputText><br/><br/>
+            <h:inputText id="newOutlayKind" value="#{outlayCdi.newOutlayKind}"></h:inputText><br/><br/>
             <h:dataTable value="#{outlayCdi.findoutlayKindAll()}" var="item">
                 <h:column>
                     <!-- column header -->
@@ -101,8 +101,13 @@
                     #{item.name}
                 </h:column>
             </h:dataTable>
-            <h:commandLink value="新增種類" action="#{outlayCdi.outlayKindCreate()}"></h:commandLink>
+            <h:commandButton value="新增種類" action="#{outlayCdi.outlayKindCreate()}">
+                <f:ajax execute = "newOutlayKind" render = "outputMessage" />
+            </h:commandButton>
+            <h2><h:outputText id = "outputMessage"
+                              value = "#{outlayCdi.outlayKindMessage}"/></h2>
         </h:form> 
+        
         <h:button value="返回" outcome="base"></h:button>
 </div>
 

@@ -83,6 +83,14 @@ public class outlayCdi implements Serializable{
     public String getNewOutlayKind() {
         return newOutlayKind;
     }
+    
+    public String getOutlayKindMessage() {
+        if("".equals(newOutlayKind) || newOutlayKind ==null){
+            return "Null Message";
+        }else{
+            return "Ajax message : 你已新增( " + newOutlayKind +")";
+        }
+   }
 
     /**
      * Set the value of newOutlayKind
