@@ -151,7 +151,9 @@ public class incomeCid {
         return "index";
     }
 
-    
+    public List<income> findincomeItemAll(){
+        return incomes.findAll();
+    }
     
     public incomeCid() {
     }
