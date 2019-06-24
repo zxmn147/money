@@ -108,4 +108,12 @@
             <redirect/>
         </navigation-case>
     </navigation-rule>
+    <validator>  
+        <validator-id>  
+            converters.Password  
+        </validator-id>  
+            <validator-class>  
+                converters.PasswordValidator  
+            </validator-class>  
+    </validator>  
 </faces-config>
