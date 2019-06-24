@@ -175,6 +175,10 @@ public class outlayCdi implements Serializable{
         return "index";
     }
     
+    public List<outlay> findoutlayAll(){
+        return outlayF.findAll();
+    }
+    
     /**
      * Creates a new instance of outlay
      */

@@ -66,14 +66,14 @@
         </h:form>
                 <h:form>
                     #{securityBean.principalName}
-                    <h:commandLink value="登出" action="#{securityBean.logout()}"></h:commandLink>
-                     
+                    <h:commandLink value="登出" action="#{securityBean.logout()}"></h:commandLink>     
                     <h:commandLink value="新增支出" action="#{outlayCdi.goNewItemPage()}"></h:commandLink>
                     <h:commandLink value="新增收入" action="#{incomeCid.incomeNewPage()}"></h:commandLink>
                        <h:button value="支出" outcome="outlay"></h:button>
                        <h:button value="收入" outcome="income"></h:button>
                        <h:button value="收支簿" outcome="moneyBook"></h:button>
                        <h:button value="會員管理" outcome="account"></h:button>
+                       <h:button value="版面管理" outcome="base"></h:button>
                     </h:form>
     
     </h:body>    

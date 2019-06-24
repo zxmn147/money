@@ -1,18 +1,95 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>省錢大作戰</title>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <head>  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Bootstrap Theme Simply Me</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <style>
+        body {
+          font: 20px Montserrat, sans-serif;
+          line-height: 1.8;
+          color: #f5f6f7;
+        }
+        p {font-size: 16px;}
+        .margin {margin-bottom: 45px;}
+        .bg-1 { 
+          background-color: #1abc9c; /* Green */
+          color: #000000;
+        }
+        .bg-2 { 
+          background-color: #474e5d; /* Dark Blue */
+          color: #ffffff;
+        }
+        .bg-3 { 
+          background-color: #ffffff; /* White */
+          color: #555555;
+        }
+        .bg-4 { 
+          background-color: #2f2f2f; /* Black Gray */
+          color: #fff;
+        }
+        .container-fluid {
+          padding-top: 70px;
+          padding-bottom: 70px;
+        }
+        .navbar {
+          padding-top: 15px;
+          padding-bottom: 15px;
+          border: 0;
+          border-radius: 0;
+          margin-bottom: 0;
+          font-size: 12px;
+          letter-spacing: 5px;
+        }
+        .navbar-nav  li a:hover {
+          color: #1abc9c !important;
+        }
+        </style>
         <f:metadata>
             <!--Put the request parameters to bean properties-->
             <f:viewParam name="KindID" value="#{outlayCdi.outKindID}"/>
         </f:metadata>
-    </h:head>
-    <h:body>
-          <h:form>
+    </head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">省錢大作戰</a>
+    </div>
+    <h:form>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><h:commandLink value="登出" action="#{securityBean.logout()}"/>(#{securityBean.principalName})</li>
+        <li><h:commandLink value="新增支出" action="#{outlayCdi.goNewItemPage()}"></h:commandLink></li>
+        <li><h:commandLink value="新增收入" action="#{incomeCid.incomeNewPage()}"></h:commandLink></li>
+        <li><h:link value="支出" outcome="outlay"></h:link></li>
+        <li><h:link value="收入" outcome="income"></h:link></li>
+        <li><h:link value="會員管理" outcome="account"></h:link></li>
+        <li><h:link value="版面管理" outcome="base"></h:link></li>      
+      </ul>
+    </div>
+    </h:form>
+  </div>
+</nav>
+
+<!-- First Container -->
+<div class="container-fluid bg-1 text-center">
+    <h:form>
                <script type="text/javascript">    
     PrimeFaces.locales['de'] = {
         closeText: 'Schließen',
@@ -67,8 +144,15 @@
             <h:commandButton value="儲存" action="#{outlayCdi.outlayCreate(request.remoteUser)}">
             </h:commandButton>    
             <h:button value="再來一筆" outcome="newin"></h:button>
-            <h:button value="取消" outcome="index"></h:button>
+            <h:button value="取消" outcome="base"></h:button>
         </h:form>
-    </h:body>
+</div>
+
+<!-- Footer -->
+<footer class="container-fluid bg-4 text-center">
+  <p>Bootstrap Theme Made By <a href="https://www.w3schools.com">www.w3schools.com</a></p> 
+</footer>
+
+</body>
 </html>
 
