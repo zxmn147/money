@@ -6,6 +6,9 @@
 package cdibeans;
 
 import entity.incomeKind;
+import entity.income;
+import entityControl.accountFacade;
+import entityControl.incomeFacade;
 import entityControl.incomeKindFacade;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -17,12 +20,19 @@ import javax.enterprise.context.RequestScoped;
  *
  * @author sunny
  */
-@Named(value = "income")
+@Named(value = "incomeCid")
 @RequestScoped
-public class income {
+public class incomeCid {
     
     @EJB
     private incomeKindFacade incomeKind;
+    
+    @EJB
+    private incomeFacade incomes;
+    
+    @EJB
+    private accountFacade accountFacade;
+    
 //    populate incomkind Items
     public void init(){
         incomeKind incomeKind1 = new incomeKind();
@@ -93,20 +103,57 @@ public class income {
         this.incomeKindID = incomeKindID;
     }
     
-    public String incomeCreate(){
-        incomeKind addIncomeKind = new incomeKind();
-        addIncomeKind.setName(newIncomeKind);
-        incomeKind.create(addIncomeKind);
-        return "incomeKind";
-    }
+    
 
     
     public String incomeKindPage(){
         return "incomeKind";
     }
     
+    public String incomeNewPage(){
+        return "newin";
+    }
     
-    public income() {
+    private income newIncome = new income();
+
+    public income getNewIncome() {
+        return newIncome;
+    }
+
+    public void setNewIncome(income newIncome) {
+        this.newIncome = newIncome;
+    }
+    
+    public Long member(String memberId){
+//        System.out.println(memberId);
+        for(int i=0;i<accountFacade.count();i++){
+            System.out.println(accountFacade.findAll().get(i).getUsername());
+            if (accountFacade.findAll().get(i).getUsername().equals(memberId)){
+//                System.out.println("accountFacade.findAll().get(i).getId()");
+//                System.out.println(accountFacade.findAll().get(i).getId());
+                Long member_id = accountFacade.findAll().get(i).getId(); 
+                return member_id;
+            }
+        } 
+        return null;
+    }
+    
+    public String incomeCreate(String memberId){
+        newIncome.setMember_id(member(memberId));
+        newIncome.setIncomeKind(incomeKind.findAll().get(incomeKindID).getName());
+        System.out.println(newIncome.getMember_id());
+        System.out.println(newIncome.getDate());
+        System.out.println(newIncome.getIncomeKind());
+        System.out.println(newIncome.getItemName());
+        System.out.println(newIncome.getMoney());
+        System.out.println(newIncome.getNote());
+        incomes.create(newIncome);
+        return "index";
+    }
+
+    
+    
+    public incomeCid() {
     }
     
     

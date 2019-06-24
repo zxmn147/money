@@ -147,28 +147,6 @@ public class outlayCdi implements Serializable{
     public void setOutKindID(long outKindID) {
         this.outKindID = outKindID;
     }
-
-
-    private String memberID;
-
-    /**
-     * Get the value of memberID
-     *
-     * @return the value of memberID
-     */
-    public String getMemberID() {
-        return memberID;
-    }
-
-    /**
-     * Set the value of memberID
-     *
-     * @param memberID new value of memberID
-     */
-    public void setMemberID(String memberID) {
-        this.memberID = memberID;
-    }
-    
     
     public Long member(String memberId){
 //        System.out.println(memberId);

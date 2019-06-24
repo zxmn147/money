@@ -60,7 +60,26 @@ public class income implements Serializable {
         this.incomeKind = incomeKind;
     }
 
-    
+    private long member_id;
+
+    /**
+     * Get the value of member_id
+     *
+     * @return the value of member_id
+     */
+    public long getMember_id() {
+        return member_id;
+    }
+
+    /**
+     * Set the value of member_id
+     *
+     * @param member_id new value of member_id
+     */
+    public void setMember_id(long member_id) {
+        this.member_id = member_id;
+    }
+
     
     @Column(length = 30)
     private String itemName;
