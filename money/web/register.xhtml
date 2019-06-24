@@ -97,7 +97,9 @@ and open the template in the editor.
             <h:outputLabel value="帳號: "></h:outputLabel>
             <h:inputText value="#{register.newItem.username}" maxlength="30"></h:inputText><br/><br/>
             <h:outputLabel value="密碼: "></h:outputLabel>
-            <h:inputSecret value="#{register.newItem.password}"  maxlength="15"></h:inputSecret><br/><br/>
+            <h:inputSecret value="#{register.newItem.password}" required="true">  
+                <f:validator validatorId="converters.Password"/>  
+            </h:inputSecret>
              <p>填寫基本資料(也可以之後再補填入)</p>
             <h:outputLabel value="姓名: "></h:outputLabel>
             <h:inputText value="#{register.newItem.name}"></h:inputText><br/><br/>
