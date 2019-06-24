@@ -144,7 +144,7 @@ public class outlayCdi implements Serializable{
         System.out.println(newOutlay.getItemName());
         System.out.println(newOutlay.getMoney());
         System.out.println(newOutlay.getNote());
-        System.out.println(newOutlay.getOutlay_kind());
+        System.out.println(newOutlay.getOutlayKind());
         System.out.println(newOutlay.getAddDate());
         /*outlayF.create(newOutlay);*/
         return "index";

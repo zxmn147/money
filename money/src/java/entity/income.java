@@ -38,10 +38,28 @@ public class income implements Serializable {
         this.id = id;
     }
     
-    @OneToOne(cascade = CascadeType.ALL)
-    // Specity join column name and referened column name.
-    @JoinColumn(name = "income_kind", referencedColumnName = "ID")
-    private incomeKind income_kind;
+    
+    @Column(length = 30)
+    private String incomeKind;
+
+    /**
+     * Get the value of incomeKind
+     *
+     * @return the value of incomeKind
+     */
+    public String getIncomeKind() {
+        return incomeKind;
+    }
+
+    /**
+     * Set the value of incomeKind
+     *
+     * @param incomeKind new value of incomeKind
+     */
+    public void setIncomeKind(String incomeKind) {
+        this.incomeKind = incomeKind;
+    }
+
     
     
     @Column(length = 30)
