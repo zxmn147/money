@@ -44,6 +44,19 @@ public class outlay implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    private long member_id;
+
+    public long getMember_id() {
+        return member_id;
+    }
+
+    public void setMember_id(long member_id) {
+        this.member_id = member_id;
+    }
+
+    
+
     
   
     @Column(length = 30)
@@ -66,27 +79,6 @@ public class outlay implements Serializable {
     public void setOutlayKind(String outlayKind) {
         this.outlayKind = outlayKind;
     }
-
-    private long memberID;
-
-    /**
-     * Get the value of memberID
-     *
-     * @return the value of memberID
-     */
-    public long getMemberID() {
-        return memberID;
-    }
-
-    /**
-     * Set the value of memberID
-     *
-     * @param memberID new value of memberID
-     */
-    public void setMemberID(long memberID) {
-        this.memberID = memberID;
-    }
-
 
     
     @Column(length = 30)

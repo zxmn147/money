@@ -5,16 +5,21 @@
  */
 package cdibeans;
 
+import entity.members;
 import entity.outlay;
 import entity.outlayKind;
 import entityControl.outlayKindFacade;
 import entityControl.outlayFacade;
+import entityControl.accountFacade;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.annotation.ManagedProperty;
+import javax.faces.context.FacesContext;
+import cdibeans.SecurityBean;
 
 /**
  *
@@ -29,7 +34,12 @@ public class outlayCdi implements Serializable{
      */
     @EJB
     private outlayKindFacade outlayKind;
-     private outlayFacade outlayF;
+    
+    @EJB
+    private outlayFacade outlayF;
+    
+    @EJB
+    private accountFacade accountFacade;
     
     public String outlayKindPage(){
         return "outlayKind";
@@ -91,7 +101,7 @@ public class outlayCdi implements Serializable{
         return "outlayKind";
     }
     
-    private outlay newOutlay;
+    private outlay newOutlay = new outlay();
 
     /**
      * Get the value of newOutlay
@@ -118,7 +128,7 @@ public class outlayCdi implements Serializable{
         return "newout";
     }
     
-    private long outKindID = 51;
+    private long outKindID;
 
     /**
      * Get the value of outKindID
@@ -136,17 +146,54 @@ public class outlayCdi implements Serializable{
      */
     public void setOutKindID(long outKindID) {
         this.outKindID = outKindID;
-        System.out.println(this.outKindID);
+    }
+
+
+    private String memberID;
+
+    /**
+     * Get the value of memberID
+     *
+     * @return the value of memberID
+     */
+    public String getMemberID() {
+        return memberID;
+    }
+
+    /**
+     * Set the value of memberID
+     *
+     * @param memberID new value of memberID
+     */
+    public void setMemberID(String memberID) {
+        this.memberID = memberID;
     }
     
-    public String outlayCreate(){
-        newOutlay.setMemberID(1);
+    
+    public Long member(String memberId){
+//        System.out.println(memberId);
+        for(int i=0;i<accountFacade.count();i++){
+            System.out.println(accountFacade.findAll().get(i).getUsername());
+            if (accountFacade.findAll().get(i).getUsername().equals(memberId)){
+//                System.out.println("accountFacade.findAll().get(i).getId()");
+//                System.out.println(accountFacade.findAll().get(i).getId());
+                Long member_id = accountFacade.findAll().get(i).getId(); 
+                return member_id;
+            }
+        } 
+        return null;
+    }
+    
+    public String outlayCreate(String memberId){
+        newOutlay.setMember_id(member(memberId));
+        newOutlay.setOutlayKind(outlayKind.find(outKindID).getName());
+        System.out.println(newOutlay.getMember_id());
+        System.out.println(newOutlay.getAddDate());
+        System.out.println(newOutlay.getOutlayKind());
         System.out.println(newOutlay.getItemName());
         System.out.println(newOutlay.getMoney());
         System.out.println(newOutlay.getNote());
-        System.out.println(newOutlay.getOutlayKind());
-        System.out.println(newOutlay.getAddDate());
-        /*outlayF.create(newOutlay);*/
+        outlayF.create(newOutlay);
         return "index";
     }
     

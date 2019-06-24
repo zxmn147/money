@@ -242,7 +242,7 @@ public class members implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL) 
     @JoinColumn(name = "member_ID", referencedColumnName = "ID")  
-    private Collection<income> incomes;  
+    private Collection<income> incomes;
     
     
     @OneToMany(cascade = CascadeType.ALL) 

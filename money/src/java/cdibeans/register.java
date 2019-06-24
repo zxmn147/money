@@ -34,11 +34,11 @@ public class register implements Serializable{
     public register() {
     }
     
-     public String getPrincipalName() {
+    public String getPrincipalName() {
         return principal.getName();
     }
     
-        private long id1;
+    private long id1;
 
     /**
      * Get the value of id1
