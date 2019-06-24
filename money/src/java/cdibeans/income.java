@@ -73,7 +73,7 @@ public class income {
         return "incomeKind";
     }
     
-        private int incomeKindID=51;
+    private int incomeKindID;
 
     /**
      * Get the value of incomeKindID

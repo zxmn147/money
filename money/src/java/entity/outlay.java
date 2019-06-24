@@ -44,42 +44,41 @@ public class outlay implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    private long member_id;
+
+    public long getMember_id() {
+        return member_id;
+    }
+
+    public void setMember_id(long member_id) {
+        this.member_id = member_id;
+    }
+
+    
+
     
   
-    
-     @OneToOne(cascade = CascadeType.ALL)
-    // Specity join column name and referened column name.
-    @JoinColumn(name = "out_kind", referencedColumnName = "ID")
-    private outlayKind outlay_kind;
-
-    public outlayKind getOutlay_kind() {
-        return outlay_kind;
-    }
-
-    public void setOutlay_kind(outlayKind outlay_kind) {
-        this.outlay_kind = outlay_kind;
-    }
-    
-    private long memberID;
+    @Column(length = 30)
+    private String outlayKind;
 
     /**
-     * Get the value of memberID
+     * Get the value of outlayKind
      *
-     * @return the value of memberID
+     * @return the value of outlayKind
      */
-    public long getMemberID() {
-        return memberID;
+    public String getOutlayKind() {
+        return outlayKind;
     }
 
     /**
-     * Set the value of memberID
+     * Set the value of outlayKind
      *
-     * @param memberID new value of memberID
+     * @param outlayKind new value of outlayKind
      */
-    public void setMemberID(long memberID) {
-        this.memberID = memberID;
+    public void setOutlayKind(String outlayKind) {
+        this.outlayKind = outlayKind;
     }
-
 
     
     @Column(length = 30)
