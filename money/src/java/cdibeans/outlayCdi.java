@@ -5,24 +5,31 @@
  */
 package cdibeans;
 
+import entity.outlay;
 import entity.outlayKind;
 import entityControl.outlayKindFacade;
+import entityControl.outlayFacade;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 
 /**
  *
- * @author sunny
+ * @author 伶娸
  */
-@Named(value = "outlay")
-@RequestScoped
-public class outlay {
-    
-    
+@Named(value = "outlayCdi")
+@SessionScoped
+public class outlayCdi implements Serializable{
+
+    /**
+     * Creates a new instance of outlayCdi
+     */
     @EJB
     private outlayKindFacade outlayKind;
+     private outlayFacade outlayF;
     
     public String outlayKindPage(){
         return "outlayKind";
@@ -84,10 +91,68 @@ public class outlay {
         return "outlayKind";
     }
     
+    private outlay newOutlay;
+
+    /**
+     * Get the value of newOutlay
+     *
+     * @return the value of newOutlay
+     */
+    public outlay getNewOutlay() {
+        return newOutlay;
+    }
+
+    /**
+     * Set the value of newOutlay
+     *
+     * @param newOutlay new value of newOutlay
+     */
+    public void setNewOutlay(outlay newOutlay) {
+        this.newOutlay = newOutlay;
+        
+    }
+
+    
+    public String goNewItemPage(){
+        newOutlay = new outlay();
+        return "newout";
+    }
+    
+    private long outKindID = 51;
+
+    /**
+     * Get the value of outKindID
+     *
+     * @return the value of outKindID
+     */
+    public long getOutKindID() {
+        return outKindID;
+    }
+
+    /**
+     * Set the value of outKindID
+     *
+     * @param outKindID new value of outKindID
+     */
+    public void setOutKindID(long outKindID) {
+        this.outKindID = outKindID;
+        System.out.println(this.outKindID);
+    }
+    
+    public String outlayCreate(){
+        newOutlay.setMemberID(1);
+        System.out.println(newOutlay.getItemName());
+        System.out.println(newOutlay.getMoney());
+        System.out.println(newOutlay.getNote());
+        System.out.println(newOutlay.getOutlay_kind());
+        System.out.println(newOutlay.getAddDate());
+        /*outlayF.create(newOutlay);*/
+        return "index";
+    }
+    
     /**
      * Creates a new instance of outlay
      */
-    public outlay() {
+    public outlayCdi() {
     }
-    
 }

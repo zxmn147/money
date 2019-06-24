@@ -8,9 +8,14 @@ package entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +23,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.transaction.UserTransaction;
 
 /**
  *
@@ -45,7 +51,36 @@ public class outlay implements Serializable {
     // Specity join column name and referened column name.
     @JoinColumn(name = "out_kind", referencedColumnName = "ID")
     private outlayKind outlay_kind;
+
+    public outlayKind getOutlay_kind() {
+        return outlay_kind;
+    }
+
+    public void setOutlay_kind(outlayKind outlay_kind) {
+        this.outlay_kind = outlay_kind;
+    }
     
+    private long memberID;
+
+    /**
+     * Get the value of memberID
+     *
+     * @return the value of memberID
+     */
+    public long getMemberID() {
+        return memberID;
+    }
+
+    /**
+     * Set the value of memberID
+     *
+     * @param memberID new value of memberID
+     */
+    public void setMemberID(long memberID) {
+        this.memberID = memberID;
+    }
+
+
     
     @Column(length = 30)
     private String itemName;
@@ -89,28 +124,31 @@ public class outlay implements Serializable {
     }
     
     @Temporal(TemporalType.DATE)
-    private Date Date;
+     private Date addDate;
 
     /**
-     * Get the value of Date
+     * Get the value of addDate
      *
-     * @return the value of Date
+     * @return the value of addDate
      */
-    public Date getDate() {
-        return Date;
+    public Date getAddDate() {
+        return addDate;
     }
 
     /**
-     * Set the value of Date
+     * Set the value of addDate
      *
-     * @param Date new value of Date
+     * @param addDate new value of addDate
      */
-    public void setDate(Date Date) {
-        this.Date = Date;
+    public void setAddDate(Date addDate) {
+        this.addDate = addDate;
     }
+   
     
     @Column(length = 12)
     private String note;
+   
+
 
     /**
      * Get the value of note
@@ -156,6 +194,30 @@ public class outlay implements Serializable {
     @Override
     public String toString() {
         return "entity.outlay[ id=" + id + " ]";
+    }
+
+    public void persist(Object object) {
+        /* Add this to the deployment descriptor of this module (e.g. web.xml, ejb-jar.xml):
+         * <persistence-context-ref>
+         * <persistence-context-ref-name>persistence/LogicalName</persistence-context-ref-name>
+         * <persistence-unit-name>moneyPU</persistence-unit-name>
+         * </persistence-context-ref>
+         * <resource-ref>
+         * <res-ref-name>UserTransaction</res-ref-name>
+         * <res-type>javax.transaction.UserTransaction</res-type>
+         * <res-auth>Container</res-auth>
+         * </resource-ref> */
+        try {
+            Context ctx = new InitialContext();
+            UserTransaction utx = (UserTransaction) ctx.lookup("java:comp/env/UserTransaction");
+            utx.begin();
+            EntityManager em = (EntityManager) ctx.lookup("java:comp/env/persistence/LogicalName");
+            em.persist(object);
+            utx.commit();
+        } catch (Exception e) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
+            throw new RuntimeException(e);
+        }
     }
     
 }

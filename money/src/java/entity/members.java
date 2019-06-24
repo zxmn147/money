@@ -12,9 +12,14 @@ import entity.outlay;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,6 +27,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.transaction.UserTransaction;
 
 
 /**
@@ -199,6 +205,7 @@ public class members implements Serializable {
      *
      * @return the value of status
      */
+   
     public String getStatus() {
         return status;
     }
@@ -237,6 +244,7 @@ public class members implements Serializable {
     @JoinColumn(name = "member_ID", referencedColumnName = "ID")  
     private Collection<income> incomes;  
     
+    
     @OneToMany(cascade = CascadeType.ALL) 
     @JoinColumn(name = "member_ID", referencedColumnName = "ID")  
     private Collection<outlay> outlays;
@@ -268,6 +276,30 @@ public class members implements Serializable {
     @Override
     public String toString() {
         return "entity.members[ id=" + id + " ]";
+    }
+
+    public void persist(Object object) {
+        /* Add this to the deployment descriptor of this module (e.g. web.xml, ejb-jar.xml):
+         * <persistence-context-ref>
+         * <persistence-context-ref-name>persistence/LogicalName</persistence-context-ref-name>
+         * <persistence-unit-name>moneyPU</persistence-unit-name>
+         * </persistence-context-ref>
+         * <resource-ref>
+         * <res-ref-name>UserTransaction</res-ref-name>
+         * <res-type>javax.transaction.UserTransaction</res-type>
+         * <res-auth>Container</res-auth>
+         * </resource-ref> */
+        try {
+            Context ctx = new InitialContext();
+            UserTransaction utx = (UserTransaction) ctx.lookup("java:comp/env/UserTransaction");
+            utx.begin();
+            EntityManager em = (EntityManager) ctx.lookup("java:comp/env/persistence/LogicalName");
+            em.persist(object);
+            utx.commit();
+        } catch (Exception e) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
+            throw new RuntimeException(e);
+        }
     }
     
 }

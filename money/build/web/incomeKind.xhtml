@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>省錢大作戰</title>
+    </h:head>
+    <h:body>
+        <p>新增收入類別</p>
+        <h:form>
+            <h:outputLabel value="名稱: "></h:outputLabel>
+            <h:inputText value="#{income.newIncomeKind}"></h:inputText><br/><br/>
+            <h:dataTable value="#{income.findincomeAll()}" var="item">
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">ID</f:facet>
+                    <!-- row record -->
+                    #{item.id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    #{item.name}
+                </h:column>
+            </h:dataTable>
+            <h:commandLink value="新增種類" action="#{income.incomeKindCreate()}"></h:commandLink>
+        </h:form> 
+        <h:button value="返回" outcome="newRecord"></h:button>
+    </h:body>
+</html>
+

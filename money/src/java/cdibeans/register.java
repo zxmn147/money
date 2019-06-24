@@ -10,8 +10,11 @@ import entityControl.accountFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.security.Principal;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -22,10 +25,17 @@ import javax.ejb.EJB;
 public class register implements Serializable{
     @EJB
     private accountFacade accountFacade;
+     @Inject
+    private Principal principal;
+    private HttpServletRequest request;
     /**
      * Creates a new instance of money
      */
     public register() {
+    }
+    
+     public String getPrincipalName() {
+        return principal.getName();
     }
     
         private long id1;
@@ -49,14 +59,14 @@ public class register implements Serializable{
     }
 
     
-    private long ID ;
+    private String ID ;
 
     /**
      * Get the value of ID
      *
      * @return the value of ID
      */
-    public long getID() {
+    public String getID() {
         return ID;
     }
 
@@ -65,7 +75,7 @@ public class register implements Serializable{
      *
      * @param ID new value of ID
      */
-    public void setID(long ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 
@@ -126,6 +136,7 @@ public class register implements Serializable{
 
     public void setNewItem(members newItem) {
         this.newItem = newItem;
+        
     }
     
      public String goNewItemPage(){
@@ -166,8 +177,10 @@ public class register implements Serializable{
        }      
           System.out.println(a);
        if (a==0){
+        System.out.println(newItem.getName());
+        newItem.setStatus("member");
         accountFacade.create(newItem);
-        return "index";
+        return "login1";
        }
        else{
            a=0;
@@ -176,7 +189,7 @@ public class register implements Serializable{
        
 }
 
-    public String login(){
+  /*  public String login(){
         for(int i=0;i<accountFacade.count();i++){
             if (account.equals(accountFacade.findAll().get(i).getUsername()) && password.equals(accountFacade.findAll().get(i).getPassword()) && (account!=null && password!=null)) {
                ID = accountFacade.findAll().get(i).getId();
@@ -192,16 +205,21 @@ public class register implements Serializable{
         System.out.println(ID);
         return "login1"; 
     }
-    
+    */
     public String edit(){
-        if (ID ==0){
-            return "index";
+        ID = getPrincipalName();
+        System.out.println(ID);
+        /*System.out.println(updateItem.getId());*/
+        for(int i=0;i<accountFacade.count();i++){
+            if (ID.equals(accountFacade.findAll().get(i).getUsername())) {
+                id1=accountFacade.findAll().get(i).getId();
+         } 
         }
-        this.updateItem = accountFacade.find(ID);
-        
+        this.updateItem = accountFacade.find(id1);
         System.out.println(updateItem.getId());
-        
+
         return null;
+       
     }
     
     public String update(){

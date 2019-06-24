@@ -70,10 +70,36 @@ public class income {
         incomeKind addIncomeKind = new incomeKind();
         addIncomeKind.setName(newIncomeKind);
         incomeKind.create(addIncomeKind);
-        return "member/incomeKind";
+        return "incomeKind";
     }
     
+        private int incomeKindID=51;
+
+    /**
+     * Get the value of incomeKindID
+     *
+     * @return the value of incomeKindID
+     */
+    public int getIncomeKindID() {
+        return incomeKindID;
+    }
+
+    /**
+     * Set the value of incomeKindID
+     *
+     * @param incomeKindID new value of incomeKindID
+     */
+    public void setIncomeKindID(int incomeKindID) {
+        this.incomeKindID = incomeKindID;
+    }
     
+    public String incomeCreate(){
+        incomeKind addIncomeKind = new incomeKind();
+        addIncomeKind.setName(newIncomeKind);
+        incomeKind.create(addIncomeKind);
+        return "incomeKind";
+    }
+
     
     public String incomeKindPage(){
         return "incomeKind";

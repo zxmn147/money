@@ -44,7 +44,29 @@
     
 </style>
  
- 
+     <h:form>
+            <h:outputLabel value="日期: "></h:outputLabel>
+            <p:calendar value="#{outlayCdi.newOutlay.date}"></p:calendar><br/><br/>  
+            <h:outputLabel value="支出種類: "></h:outputLabel>
+            <h:selectOneMenu value="#{outlayCdi.outKindID}">
+                <f:selectItems value="#{outlayCdi.findoutlayKindAll()}"  var="outlayKind" itemLabel="#{outlayKind.name}"/>
+               
+             </h:selectOneMenu>
+            
+            <h:commandLink value="新增種類" action="#{outlayCdi.outlayKindPage()}"></h:commandLink>
+            
+            <br/><br/>  
+            <h:outputLabel value="名稱: "></h:outputLabel>
+            <h:inputText value="#{outlayCdi.newOutlay.itemName}"></h:inputText><br/><br/>
+            <h:outputLabel value="金額: "></h:outputLabel>
+            <h:inputText value="#{outlayCdi.newOutlay.money}"></h:inputText><br/><br/>
+            <h:outputLabel value="備註: "></h:outputLabel>
+            <h:inputTextarea  value="#{outlayCdi.newOutlay.note}"></h:inputTextarea><br/><br/>
+            <h:commandButton value="儲存" action="#{outlayCdi.outlayCreate}"></h:commandButton>
+            
+            <h:button value="再來一筆" outcome="newin"></h:button>
+            <h:button value="取消" outcome="index"></h:button>
+        </h:form>
 <h:form id="form">
     <p:growl id="msgs" showDetail="true" />
      
@@ -64,7 +86,9 @@
     </p:dialog>
 </h:form>
         <h:form>
-            <h:commandLink value="登出" action="#{register.logout()}"></h:commandLink>
+            <h:commandLink value="登出" action="#{securityBean.logout()}"></h:commandLink>
+               <h:button value="支出" outcome="outlay"></h:button>
+               <h:button value="收入" outcome="income"></h:button>
                <h:button value="支出" outcome="outlay"></h:button>
                <h:button value="收入" outcome="income"></h:button>
                <h:button value="收支簿" outcome="moneyBook"></h:button>

@@ -28,7 +28,8 @@ public class SecurityBean {
     private Principal principal;
     @Inject
     private HttpServletRequest request;
-
+    
+    
     /**
      * Creates a new instance of SecurityBean
      */
@@ -36,6 +37,7 @@ public class SecurityBean {
     }
 
     public String getPrincipalName() {
+        System.out.println(principal.getName());
         return principal.getName();
     }
 
@@ -50,12 +52,14 @@ public class SecurityBean {
         } catch (ServletException ex) {
             Logger.getLogger(SecurityBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "/auth/authmethodform?faces-redirect=true";
+        return "login1?faces-redirect=true";
     }
 
     public boolean isAdmin() {
         ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
         return context.isUserInRole("admin");
     }
+    
+    
 
 }
