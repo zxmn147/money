@@ -111,7 +111,7 @@ public class incomeCid {
     }
     
     public String incomeNewPage(){
-        return "newin";
+        return "home";
     }
     
     private income newIncome = new income();

@@ -105,7 +105,7 @@ and open the template in the editor.
              <p:outputLabel for="german" value="生日: " />
              <p:calendar id="german" value="#{register.newItem.birthday}" locale="de" navigator="true" pattern="yyyy-MMM-dd" /><br/><br/>
             <h:outputLabel value="電話: "></h:outputLabel>
-            <h:inputText value="#{register.newItem.phone}"  maxlength="13"></h:inputText><br/><br/>
+            <h:inputText value="#{register.newItem.phone}"  maxlength="13"><f:converter converterId="converters.cardNumberConverter" /></h:inputText><br/><br/>
             <h:outputLabel value="職業: "></h:outputLabel>
             <h:inputText value="#{register.newItem.job}"></h:inputText><br/><br/>
             <h:outputLabel value="信箱: "></h:outputLabel>

@@ -17,7 +17,6 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.annotation.ManagedProperty;
 import javax.faces.context.FacesContext;
 import cdibeans.SecurityBean;
 
@@ -125,7 +124,7 @@ public class outlayCdi implements Serializable{
     
     public String goNewItemPage(){
         newOutlay = new outlay();
-        return "newout";
+        return "home";
     }
     
     private long outKindID;
