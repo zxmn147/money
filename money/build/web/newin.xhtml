@@ -6,24 +6,30 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>省錢大作戰</title>
+        <f:metadata>
+            <!--Put the request parameters to bean properties-->
+            <f:viewParam name="incomeKindID" value="#{income.incomeKindID}"/>
+        </f:metadata>
     </h:head>
     <h:body>
           <h:form>
             <h:outputLabel value="日期: "></h:outputLabel>
-            <p:calendar></p:calendar><br/><br/>
+            <p:calendar value="#{incomeCid.newIncome.date}"></p:calendar><br/><br/>  
             <h:outputLabel value="收入種類: "></h:outputLabel>
-            <h:selectOneMenu value="#{income.incomeKindID}">
-                <f:selectItems value="#{income.findincomeAll()}"  var="incomeKind" itemLabel="#{incomeKind.name}"/>
+            <h:selectOneMenu>
+                <f:selectItems value="#{incomeCid.findincomeAll()}"  var="incomeKind" itemValue="#{incomeKind.id}" itemLabel="#{incomeKind.name}">
+                    <f:param name="incomeKindID" value="#{incomeKind.id}"></f:param>
+                </f:selectItems>
              </h:selectOneMenu>
-            <h:commandLink value="新增種類" action="#{income.incomeKindPage()}"></h:commandLink>
+            <h:commandLink value="新增種類" action="#{incomeCid.incomeKindPage()}"></h:commandLink>
             <br/><br/>  
             <h:outputLabel value="名稱: "></h:outputLabel>
-            <h:inputText></h:inputText><br/><br/>
+            <h:inputText value="#{incomeCid.newIncome.itemName}"></h:inputText><br/><br/>
             <h:outputLabel value="金額: "></h:outputLabel>
-            <h:inputText></h:inputText><br/><br/>
+            <h:inputText value="#{incomeCid.newIncome.money}"></h:inputText><br/><br/>
             <h:outputLabel value="備註: "></h:outputLabel>
-            <h:inputTextarea></h:inputTextarea><br/><br/>
-            <h:button value="儲存" outcome="index"></h:button>
+            <h:inputTextarea value="#{incomeCid.newIncome.note}"></h:inputTextarea><br/><br/>
+            <h:commandButton value="儲存" action="#{incomeCid.incomeCreate(request.remoteUser)}"></h:commandButton>
             <h:button value="再來一筆" outcome="newin"></h:button>
             <h:button value="取消" outcome="index"></h:button>
         </h:form>
