@@ -55,7 +55,7 @@
         </style>
         <f:metadata>
             <!--Put the request parameters to bean properties-->
-            <f:viewParam name="incomeKindID" value="#{income.incomeKindID}"/>
+            <f:viewParam name="incomeKindValue" value="#{incomeCid.incomeKindValue}"/>
         </f:metadata>
     </head>
 <body>
@@ -95,7 +95,7 @@
             <h:outputLabel value="收入種類: "></h:outputLabel>
             <h:selectOneMenu>
                 <f:selectItems value="#{incomeCid.findincomeAll()}"  var="incomeKind" itemValue="#{incomeKind.id}" itemLabel="#{incomeKind.name}">
-                    <f:param name="incomeKindID" value="#{incomeKind.id}"></f:param>
+                    <f:param name="incomeKindValue" value="#{incomeKind.id}"></f:param>
                 </f:selectItems>
              </h:selectOneMenu>
             <h:commandLink value="新增種類" action="#{incomeCid.incomeKindPage()}"></h:commandLink>
