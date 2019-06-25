@@ -88,9 +88,9 @@
     <h1>新增收入類別</h1>
         <h:form>
             <h:outputLabel value="名稱: "></h:outputLabel>
-            <h:inputText value="#{income.newIncomeKind}"></h:inputText><br/><br/>
+            <h:inputText value="#{incomeCid.newIncomeKind}"></h:inputText><br/><br/>
             
-            <h:dataTable value="#{income.findincomeAll()}" var="item">
+            <h:dataTable value="#{incomeCid.findincomeAll()}" var="item">
                 <h:column>
                     <!-- column header -->
                     <f:facet name="header">ID</f:facet>
@@ -102,7 +102,7 @@
                     #{item.name}
                 </h:column>
             </h:dataTable>
-            <h:commandLink value="新增種類" action="#{income.incomeKindCreate()}"></h:commandLink>
+            <h:commandLink value="新增種類" action="#{incomeCid.incomeKindCreate()}"></h:commandLink>
         </h:form> 
         <h:button value="返回" outcome="base"></h:button>
 </div>

@@ -124,6 +124,9 @@
                }
 
            </style>
+            <h:outputScript name="calendar.js" library="js" target="head"/>
+            
+            
             <h:outputLabel value="日期: "></h:outputLabel>
             <p:calendar value="#{outlayCdi.newOutlay.addDate}"></p:calendar><br/><br/>  
             <h:outputLabel value="支出種類: "></h:outputLabel>
@@ -151,7 +154,6 @@
 <footer class="container-fluid bg-4 text-center">
   <p>Bootstrap Theme Made By <a href="https://www.w3schools.com">www.w3schools.com</a></p> 
 </footer>
-
 </body>
 </html>
 

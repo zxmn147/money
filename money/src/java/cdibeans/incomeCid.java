@@ -138,9 +138,22 @@ public class incomeCid {
         return null;
     }
     
+    private int incomeKindValue;
+
+    public int getIncomeKindValue() {
+        return incomeKindValue;
+    }
+
+    public void setIncomeKindValue(int incomeKindValue) {
+        this.incomeKindValue = incomeKindValue;
+    }
+
+    
+
+    
     public String incomeCreate(String memberId){
         newIncome.setMember_id(member(memberId));
-        newIncome.setIncomeKind(incomeKind.findAll().get(incomeKindID).getName());
+        newIncome.setIncomeKind(incomeKind.findAll().get(incomeKindValue).getName());
         System.out.println(newIncome.getMember_id());
         System.out.println(newIncome.getDate());
         System.out.println(newIncome.getIncomeKind());
